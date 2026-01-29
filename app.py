@@ -1,7 +1,7 @@
+
+import os
 from flask import Flask
-
 app = Flask(__name__)
-
 # 主页 HTML
 @app.route('/')
 def index():
@@ -60,10 +60,11 @@ def index():
         <!-- 图片和文字并排容器 -->
         <div class="content-container">
             <div class="image-box">
-                <img src="<a href="https://ibb.co/vxgTQ8VC"><img src="https://i.ibb.co/KjRfLHbc/20260129144548-97-3.jpg" alt="20260129144548-97-3" border="0"></a>" alt="123" style="width: 300px;margin: 20px 0;">
+                <!-- 仅修正图片链接格式（替换为有效URL即可） -->
+                <img src="(原本有张沈星回照片)"
             </div>
             <div class="text-box">
-                <p class="main-text">这是沈星回</p>
+                <p class="main-text"></p >
             </div>
         </div>
         
@@ -76,7 +77,6 @@ def index():
     </body>
     </html>
     '''
-
 # 可以 HTML
 @app.route('/forgive')
 def forgive():
@@ -112,7 +112,6 @@ def forgive():
     </body>
     </html>
     '''
-
 # 让我再想想页面 HTML
 @app.route('/think')
 def think():
@@ -148,15 +147,14 @@ def think():
 </body>
 </html>
     '''
-
-# 理由 HTML
+# 解释 HTML
 @app.route('/more')
 def more():
     return '''
     <!DOCTYPE html>
     <html>
     <head>
-        <title>理由</title>
+        <title>解释</title>
         <style>
             body { text-align: center; margin-top: 50px; font-family: Arial; }
             .btn { 
@@ -179,11 +177,10 @@ def more():
     </head>
     <body>
         <h1>解释</h1>
-        <p>我不是故意这么直接说喜欢你的<br>你问我找你有什么事<br>我怕你觉得你对我有什么误会<br>这才直接说出来<br>希望不要给你带来压力<br>无论如何都尊重你的选择</p >
+        <p>我不是故意直接说喜欢你的<br>你问我找你有什么事<br>我怕你觉得你对我有什么误会<br>这才直接说出来<br>希望不要给你带来压力<br>无论如何都尊重你的选择</p >
         <button class="btn" onclick="location.href='/'">返回主页</button>
     </body>
     </html>
     '''
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=int(os.getenv("PORT",5000)))
